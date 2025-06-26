@@ -707,6 +707,10 @@ section,
   transition: 0.9s;
   background-color: var(--accent-color);
 }
+.leetcard {
+  width: 100%;
+  max-width: 500px;
+}
 
 /*--------------------------------------------------------------
 # Resume Section
