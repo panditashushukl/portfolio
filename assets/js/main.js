@@ -37,15 +37,6 @@
     });
   });
 
-  /**
-   * Preloader
-   */
-  const preloader = document.querySelector('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
-  }
 
   /**
    * Scroll top button
@@ -217,5 +208,13 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+
+// Call includeHTML and remove preloader after all includes are done
+document.addEventListener('DOMContentLoaded', async () => {
+  await includeHTML();
+  // Remove preloader here
+  const preloader = document.querySelector('#preloader');
+  if (preloader) preloader.remove();
+});
 
 })();
