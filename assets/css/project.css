@@ -1,0 +1,53 @@
+
+/*--------------------------------------------------------------
+# Projects Section
+--------------------------------------------------------------*/
+.project .project-item {
+  position: relative;
+}
+
+.project .project-item .icon {
+  background: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  transition: 0.5s;
+  border: 1px solid var(--accent-color);
+  margin-right: 20px;
+}
+
+.project .project-item .icon i {
+  color: var(--contrast-color);
+  font-size: 24px;
+  line-height: 0;
+}
+
+.project .project-item:hover .icon {
+  background: var(--surface-color);
+}
+
+.project .project-item:hover .icon i {
+  color: var(--accent-color);
+}
+
+.project .project-item .title {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.project .project-item .title a {
+  color: var(--heading-color);
+}
+
+.project .project-item .title a:hover {
+  color: var(--accent-color);
+}
+
+.project .project-item .description {
+  line-height: 24px;
+  font-size: 14px;
+}
