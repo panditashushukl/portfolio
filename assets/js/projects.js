@@ -82,12 +82,12 @@ const projects = [
 document.addEventListener('DOMContentLoaded', async () => {
   let preloaderRemoved = false;
 
-  // Fallback: Remove preloader after 5 seconds no matter what
+  // Fallback: Remove preloader after 30 seconds no matter what
   const preloaderTimeout = setTimeout(() => {
     const preloader = document.querySelector('#preloader');
     if (preloader) preloader.remove();
     preloaderRemoved = true;
-  }, 5000);
+  }, 30000);
 
   await includeHTML();
   renderProjects(projects);
