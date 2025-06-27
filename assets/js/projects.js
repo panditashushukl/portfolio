@@ -81,5 +81,11 @@ const projects = [
 
 document.addEventListener('DOMContentLoaded', async () => {
   await includeHTML(); // Wait for all dynamic HTML to load
-  renderProjects(projects); // Now safe to render
+  renderProjects(projects); // Render projects
+
+  // Wait for all images to load (optional, for extra safety)
+  window.addEventListener('load', () => {
+    const preloader = document.querySelector('#preloader');
+    if (preloader) preloader.remove();
+  });
 });
