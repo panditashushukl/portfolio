@@ -80,12 +80,25 @@ const projects = [
   }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  await includeHTML(); // Wait for all dynamic HTML to load
-  renderProjects(projects); // Render projects
+  let preloaderRemoved = false;
 
-  // Wait for all images to load (optional, for extra safety)
-  window.addEventListener('load', () => {
+  // Fallback: Remove preloader after 5 seconds no matter what
+  const preloaderTimeout = setTimeout(() => {
     const preloader = document.querySelector('#preloader');
     if (preloader) preloader.remove();
+    preloaderRemoved = true;
+  }, 5000);
+
+  await includeHTML();
+  renderProjects(projects);
+
+  // Use imagesLoaded if you want to wait for images, or just window.onload
+  window.addEventListener('load', () => {
+    if (!preloaderRemoved) {
+      clearTimeout(preloaderTimeout);
+      const preloader = document.querySelector('#preloader');
+      if (preloader) preloader.remove();
+      preloaderRemoved = true;
+    }
   });
 });
