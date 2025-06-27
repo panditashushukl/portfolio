@@ -58,7 +58,7 @@ const projects = [
         </div>`).join("");
 
       container.innerHTML += `
-        <section class="project section">
+        <div class="projectCard">
           <div class="container section-title" data-aos="fade-up">
             <h3>${project.url ? `<a href="${project.url}" target="_blank" class="stretched-link"><b>${project.title}</b></a>` : `<b>${project.title}</b>`}</h3>
             <p>${project.description}</p>
@@ -71,15 +71,15 @@ const projects = [
 
           <div class="container">
             <div class="row gy-4">
-              <h4><b>Key features:</b></h4>
+              <h4 style="margin-top: 50px;"><b>Key features:</b></h4>
               ${featureHTML}
             </div>
           </div>
-        </section>`;
+        </div>`;
     });
   }
 
-  // Call on page load
-  document.addEventListener('DOMContentLoaded', () => {
-    renderProjects(projects);
-  });
+document.addEventListener('DOMContentLoaded', async () => {
+  await includeHTML(); // Wait for all dynamic HTML to load
+  renderProjects(projects); // Now safe to render
+});
