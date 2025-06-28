@@ -177,7 +177,7 @@
     });
   }
 
-  // Fix scroll position for hash links on load
+  // scroll position for hash links on load
   window.addEventListener('load', () => {
     const hash = window.location.hash;
     if (hash) {

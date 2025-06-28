@@ -35,6 +35,7 @@ const projects = [
       ]
     }
 ];
+
 function renderProjects(projects) {
   const container = document.getElementById('projectContainer');
   if (!container) return;
