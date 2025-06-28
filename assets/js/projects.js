@@ -78,22 +78,6 @@ function renderProjects(projects) {
   container.innerHTML = allProjectsHTML;
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-  const preloader = document.querySelector('#preloader');
-  const removePreloader = () => {
-    if (preloader && preloader.parentNode) {
-      preloader.parentNode.removeChild(preloader);
-    }
-  };
-
-  // Fallback: Remove preloader after 30 seconds
-  const preloaderTimeout = setTimeout(removePreloader, 30000);
-
-  await includeHTML();
+document.addEventListener('DOMContentLoaded', () => {
   renderProjects(projects);
-
-  window.addEventListener('load', () => {
-    clearTimeout(preloaderTimeout);
-    removePreloader();
-  });
 });

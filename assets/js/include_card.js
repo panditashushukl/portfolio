@@ -59,7 +59,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   try {
     await includeHTML();
-    renderProjects(projects);
+    if (typeof renderProjects === "function" && typeof projects !== "undefined") {
+      renderProjects(projects);
+    }
   } catch (error) {
     console.error("Error during page initialization:", error);
   } finally {
