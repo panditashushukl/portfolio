@@ -77,7 +77,3 @@ function renderProjects(projects) {
 
   container.innerHTML = allProjectsHTML;
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderProjects(projects);
-});

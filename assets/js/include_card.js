@@ -44,22 +44,8 @@ async function includeHTML(maxRetries = 5, attempt = 0) {
   await includeHTML(maxRetries, attempt + 1);
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-
-  try {
-    await includeHTML();
-    if (typeof renderProjects === "function" && typeof projects !== "undefined") {
-      renderProjects(projects);
-    }
-  } catch (error) {
-    console.error("Error during page initialization:", error);
-  }
-
-});
-
 // Global error handler for unhandled promise rejections
 window.addEventListener('unhandledrejection', event => {
   console.error('Unhandled promise rejection:', event.reason);
 });
 
-includeHTML();

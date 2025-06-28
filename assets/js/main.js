@@ -1,224 +1,252 @@
-function initPageScripts() {
+function main() {
   "use strict";
 
-  // Cached selectors
-  const header = document.querySelector('#header');
-  const headerToggleBtn = document.querySelector('.header-toggle');
-  const scrollTopBtn = document.querySelector('.scroll-top');
-  const navmenu = document.querySelector('#navmenu');
-  const navmenuLinks = navmenu ? navmenu.querySelectorAll('a') : [];
-
-  // Header toggle handler
-  const toggleHeader = () => {
-    if (!header || !headerToggleBtn) return;
-    header.classList.toggle('header-show');
-    headerToggleBtn.classList.toggle('bi-list');
-    headerToggleBtn.classList.toggle('bi-x');
-  };
-  headerToggleBtn?.addEventListener('click', toggleHeader);
-
-  // Hide mobile nav on navmenu link click (event delegation)
-  navmenu?.addEventListener('click', e => {
-    const target = e.target.closest('a');
-    if (target && header?.classList.contains('header-show')) {
-      toggleHeader();
+  // 1. Header Toggle
+  try {
+    const headerToggleBtn = document.querySelector('.header-toggle');
+    if (headerToggleBtn) {
+      function headerToggle() {
+        document.querySelector('#header').classList.toggle('header-show');
+        headerToggleBtn.classList.toggle('bi-list');
+        headerToggleBtn.classList.toggle('bi-x');
+      }
+      headerToggleBtn.addEventListener('click', headerToggle);
+    } else {
+      console.warn("header-toggle button not found.");
     }
-  });
+  } catch (err) {
+    console.error("Header toggle error:", err);
+  }
 
-  // Toggle mobile nav dropdowns (event delegation)
-  navmenu?.querySelectorAll('.toggle-dropdown').forEach(toggle => {
-    toggle.addEventListener('click', e => {
-      e.preventDefault();
-      const parent = toggle.parentNode;
-      if (!parent) return;
-      parent.classList.toggle('active');
-      parent.nextElementSibling?.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
+  // 2. Hide mobile nav on nav link click
+  try {
+    document.querySelectorAll('#navmenu a').forEach(navmenu => {
+      navmenu.addEventListener('click', () => {
+        if (document.querySelector('.header-show')) {
+          document.querySelector('.header-toggle')?.click();
+        }
+      });
     });
-  });
+  } catch (err) {
+    console.error("Nav link click error:", err);
+  }
 
-  // Scroll top button toggle
-  const toggleScrollTop = () => {
-    if (!scrollTopBtn) return;
-    window.scrollY > 100 ? scrollTopBtn.classList.add('active') : scrollTopBtn.classList.remove('active');
-  };
+  // 3. Toggle mobile nav dropdowns
+  try {
+    document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
+      navmenu.addEventListener('click', function (e) {
+        e.preventDefault();
+        this.parentNode.classList.toggle('active');
+        this.parentNode.nextElementSibling?.classList.toggle('dropdown-active');
+        e.stopImmediatePropagation();
+      });
+    });
+  } catch (err) {
+    console.error("Dropdown toggle error:", err);
+  }
 
-  scrollTopBtn?.addEventListener('click', e => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
 
-  // Debounce helper
-  const debounce = (fn, delay) => {
-    let timeout;
-    return (...args) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => fn(...args), delay);
-    };
-  };
+  // 5. Scroll top button
+  try {
+    const scrollTop = document.querySelector('.scroll-top');
+    function toggleScrollTop() {
+      if (scrollTop) {
+        scrollTop.classList.toggle('active', window.scrollY > 100);
+      }
+    }
 
-  // Debounced scroll handler for performance
-  const onScroll = debounce(() => {
-    toggleScrollTop();
-    navmenuScrollspy();
-  }, 100);
-
-  window.addEventListener('load', () => {
-    toggleScrollTop();
-    aosInit();
-    navmenuScrollspy();
-    initSwiper();
-  });
-
-  document.addEventListener('scroll', onScroll);
-
-  // AOS init
-  function aosInit() {
-    if (typeof AOS !== 'undefined' && AOS.init) {
-      AOS.init({
-        duration: 600,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false,
+    if (scrollTop) {
+      scrollTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
+
+    window.addEventListener('load', toggleScrollTop);
+    document.addEventListener('scroll', toggleScrollTop);
+  } catch (err) {
+    console.error("Scroll top button error:", err);
   }
 
-  // Typed.js init
-  const typedEl = document.querySelector('.typed');
-  if (typedEl && typeof Typed !== 'undefined') {
-    const typedStrings = typedEl.getAttribute('data-typed-items')?.split(',') ?? [];
-    new Typed('.typed', {
-      strings: typedStrings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000,
+  // 6. AOS Animation
+  function aosInit() {
+    AOS.init({
+      duration: 600,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
     });
   }
+  window.addEventListener('load', () => {
+    try {
+      aosInit();
+    } catch (err) {
+      console.error("AOS init error:", err);
+    }
+  });
 
-  // PureCounter init
-  if (typeof PureCounter !== 'undefined') {
-    new PureCounter();
+  // 7. Typed.js
+  try {
+    const selectTyped = document.querySelector('.typed');
+    if (selectTyped) {
+      let typed_strings = selectTyped.getAttribute('data-typed-items');
+      typed_strings = typed_strings?.split(',');
+      new Typed('.typed', {
+        strings: typed_strings,
+        loop: true,
+        typeSpeed: 100,
+        backSpeed: 50,
+        backDelay: 2000
+      });
+    }
+  } catch (err) {
+    console.error("Typed.js init error:", err);
   }
 
-  // Skills animation (Waypoint)
-  const skillsAnimation = document.querySelectorAll('.skills-animation');
-  if (typeof Waypoint !== 'undefined') {
-    skillsAnimation.forEach(item => {
+  // 8. PureCounter
+  try {
+    new PureCounter();
+  } catch (err) {
+    console.error("PureCounter error:", err);
+  }
+
+  // 9. Skills animation with Waypoints
+  try {
+    const skillsAnimation = document.querySelectorAll('.skills-animation');
+    skillsAnimation.forEach((item) => {
       new Waypoint({
         element: item,
         offset: '80%',
-        handler: () => {
-          item.querySelectorAll('.progress .progress-bar').forEach(bar => {
-            bar.style.width = bar.getAttribute('aria-valuenow') + '%';
+        handler: function () {
+          let progress = item.querySelectorAll('.progress .progress-bar');
+          progress.forEach(el => {
+            el.style.width = el.getAttribute('aria-valuenow') + '%';
           });
         }
       });
     });
+  } catch (err) {
+    console.error("Skills animation error:", err);
   }
 
-  // GLightbox init
-  if (typeof GLightbox !== 'undefined') {
+  // 10. GLightbox
+  try {
     GLightbox({ selector: '.glightbox' });
+  } catch (err) {
+    console.error("GLightbox error:", err);
   }
 
-  // Isotope init with filters
-  document.querySelectorAll('.isotope-layout').forEach(isotopeItem => {
-    const container = isotopeItem.querySelector('.isotope-container');
-    if (!container) return;
+  // 11. Isotope filtering
+  try {
+    document.querySelectorAll('.isotope-layout').forEach(function (isotopeItem) {
+      let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
+      let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
+      let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
 
-    const layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
-    const filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
-    const sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
-
-    let initIsotope;
-    if (typeof imagesLoaded !== 'undefined' && typeof Isotope !== 'undefined') {
-      imagesLoaded(container, () => {
-        initIsotope = new Isotope(container, {
+      let initIsotope;
+      imagesLoaded(isotopeItem.querySelector('.isotope-container'), function () {
+        initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
           itemSelector: '.isotope-item',
           layoutMode: layout,
           filter: filter,
-          sortBy: sort,
+          sortBy: sort
         });
       });
-    }
 
-    isotopeItem.querySelectorAll('.isotope-filters li').forEach(filterBtn => {
-      filterBtn.addEventListener('click', () => {
-        isotopeItem.querySelector('.isotope-filters .filter-active')?.classList.remove('filter-active');
-        filterBtn.classList.add('filter-active');
-        initIsotope?.arrange({ filter: filterBtn.getAttribute('data-filter') });
-        aosInit();
+      isotopeItem.querySelectorAll('.isotope-filters li').forEach(function (filters) {
+        filters.addEventListener('click', function () {
+          isotopeItem.querySelector('.isotope-filters .filter-active')?.classList.remove('filter-active');
+          this.classList.add('filter-active');
+          initIsotope?.arrange({
+            filter: this.getAttribute('data-filter')
+          });
+          if (typeof aosInit === 'function') aosInit();
+        });
       });
     });
-  });
+  } catch (err) {
+    console.error("Isotope layout error:", err);
+  }
 
-  // Swiper init
+  // 12. Swiper slider init
   function initSwiper() {
-    if (typeof Swiper === 'undefined') return;
-    document.querySelectorAll(".init-swiper").forEach(swiperElement => {
-      const configEl = swiperElement.querySelector(".swiper-config");
-      if (!configEl) return;
-
-      let config;
+    document.querySelectorAll(".init-swiper").forEach(function (swiperElement) {
       try {
-        config = JSON.parse(configEl.textContent.trim());
-      } catch {
-        console.warn('Invalid JSON in swiper config');
-        return;
-      }
-
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
+        const configEl = swiperElement.querySelector(".swiper-config");
+        if (!configEl) throw new Error("Missing .swiper-config");
+        let config = JSON.parse(configEl.innerHTML.trim());
         new Swiper(swiperElement, config);
+      } catch (err) {
+        console.error("Swiper init error:", err);
       }
     });
   }
+  window.addEventListener("load", initSwiper);
 
-  // scroll position for hash links on load
+  // 13. Scroll to hash on load
   window.addEventListener('load', () => {
-    const hash = window.location.hash;
-    if (hash) {
-      const section = document.querySelector(hash);
-      if (section) {
-        setTimeout(() => {
-          const scrollMarginTop = parseInt(getComputedStyle(section).scrollMarginTop) || 0;
-          window.scrollTo({
-            top: section.offsetTop - scrollMarginTop,
-            behavior: 'smooth',
-          });
-        }, 100);
+    try {
+      if (window.location.hash) {
+        const section = document.querySelector(window.location.hash);
+        if (section) {
+          setTimeout(() => {
+            let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
+            window.scrollTo({
+              top: section.offsetTop - parseInt(scrollMarginTop),
+              behavior: 'smooth'
+            });
+          }, 100);
+        }
       }
+    } catch (err) {
+      console.error("Scroll to hash error:", err);
     }
   });
 
-  // Navmenu scrollspy
-  function navmenuScrollspy() {
-    navmenuLinks.forEach(link => {
-      if (!link.hash) return;
-      const section = document.querySelector(link.hash);
-      if (!section) return;
-
-      const position = window.scrollY + 200;
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        navmenu.querySelectorAll('a.active').forEach(activeLink => activeLink.classList.remove('active'));
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
-    });
+  // 14. Navmenu Scrollspy
+  try {
+    let navmenulinks = document.querySelectorAll('.navmenu a');
+    function navmenuScrollspy() {
+      navmenulinks.forEach(navmenulink => {
+        if (!navmenulink.hash) return;
+        let section = document.querySelector(navmenulink.hash);
+        if (!section) return;
+        let position = window.scrollY + 200;
+        if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+          document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
+          navmenulink.classList.add('active');
+        } else {
+          navmenulink.classList.remove('active');
+        }
+      });
+    }
+    window.addEventListener('load', navmenuScrollspy);
+    document.addEventListener('scroll', navmenuScrollspy);
+  } catch (err) {
+    console.error("Scrollspy error:", err);
   }
+
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  initPageScripts();
-});
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    await includeHTML();
 
-window.addEventListener('load', () => {
-  const preloader = document.querySelector('#preloader');
-  if (preloader) { 
-    preloader.remove();
+    if (typeof renderProjects === "function" && typeof projects !== "undefined") {
+      renderProjects(projects);
+    }
+
+    main()
+    AOS.init();
+    try {
+      const preloader = document.querySelector('#preloader');
+      if (preloader) {
+        preloader.remove();
+      }
+    } catch (err) {
+      console.error("Preloader error:", err);
+    }
+  } catch (error) {
+    console.error("Error during page initialization:", error);
   }
 });
