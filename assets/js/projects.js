@@ -35,70 +35,64 @@ const projects = [
       ]
     }
 ];
+function renderProjects(projects) {
+  const container = document.getElementById('projectContainer');
+  if (!container) return;
 
-  function renderProjects(projects) {
-    const container = document.getElementById('projectContainer');
-    projects.forEach(project => {
-      const techHTML = project.techStack.map(item => `
-        <div class="col-lg-4 col-md-6 project-item d-flex" data-aos="fade-up">
-          <div class="icon flex-shrink-0"><i class="bi ${item.icon}"></i></div>
-          <div>
-            <h4 class="title"><a href="javascript:void(0)" class="stretched-link">${item.name}</a></h4>
-            <p class="description">${item.desc}</p>
-          </div>
-        </div>`).join("");
+  // Build full HTML string first to avoid multiple DOM writes
+  const allProjectsHTML = projects.map(project => {
+    const techHTML = project.techStack.map(item => `
+      <div class="col-lg-4 col-md-6 project-item d-flex" data-aos="fade-up">
+        <div class="icon flex-shrink-0"><i class="bi ${item.icon}"></i></div>
+        <div>
+          <h4 class="title"><a href="javascript:void(0)" class="stretched-link">${item.name}</a></h4>
+          <p class="description">${item.desc}</p>
+        </div>
+      </div>`).join("");
 
-      const featureHTML = project.features.map(item => `
-        <div class="col-lg-4 col-md-6 project-item d-flex" data-aos="fade-up">
-          <div class="icon flex-shrink-0"><i class="bi ${item.icon}"></i></div>
-          <div>
-            <h4 class="title"><a href="javascript:void(0)" class="stretched-link">${item.title}</a></h4>
-            <p class="description">${item.desc}</p>
-          </div>
-        </div>`).join("");
+    const featureHTML = project.features.map(item => `
+      <div class="col-lg-4 col-md-6 project-item d-flex" data-aos="fade-up">
+        <div class="icon flex-shrink-0"><i class="bi ${item.icon}"></i></div>
+        <div>
+          <h4 class="title"><a href="javascript:void(0)" class="stretched-link">${item.title}</a></h4>
+          <p class="description">${item.desc}</p>
+        </div>
+      </div>`).join("");
 
-      container.innerHTML += `
-        <div class="projectCard">
-          <div class="container section-title" data-aos="fade-up">
-            <h3>${project.url ? `<a href="${project.url}" target="_blank" class="stretched-link"><b>${project.title}</b></a>` : `<b>${project.title}</b>`}</h3>
-            <p>${project.description}</p>
-          </div>
+    return `
+      <div class="projectCard" data-aos="fade-up">
+        <h3>${project.url 
+          ? `<a href="${project.url}" target="_blank" rel="noopener noreferrer" class="stretched-link"><b>${project.title}</b></a>` 
+          : `<b>${project.title}</b>`}</h3>
+        <p>${project.description}</p>
 
-          <div class="container">
-            <h4><b>Tech Stack:</b></h4>
-            <div class="row gy-4">${techHTML}</div>
-          </div>
+        <h4 style="margin-top: 30px; margin-bottom: 10px;"><b>Tech Stack:</b></h4>
+        <div class="row gy-4">${techHTML}</div>
 
-          <div class="container">
-            <div class="row gy-4">
-              <h4 style="margin-top: 50px;"><b>Key features:</b></h4>
-              ${featureHTML}
-            </div>
-          </div>
-        </div>`;
-    });
-  }
+        <h4 style="margin-top: 30px; margin-bottom: 10px;"><b>Key features:</b></h4>
+        <div class="row gy-4">${featureHTML}</div>
+      </div>`;
+  }).join("");
+
+  container.innerHTML = allProjectsHTML;
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
-  let preloaderRemoved = false;
+  const preloader = document.querySelector('#preloader');
+  const removePreloader = () => {
+    if (preloader && preloader.parentNode) {
+      preloader.parentNode.removeChild(preloader);
+    }
+  };
 
-  // Fallback: Remove preloader after 30 seconds no matter what
-  const preloaderTimeout = setTimeout(() => {
-    const preloader = document.querySelector('#preloader');
-    if (preloader) preloader.remove();
-    preloaderRemoved = true;
-  }, 30000);
+  // Fallback: Remove preloader after 30 seconds
+  const preloaderTimeout = setTimeout(removePreloader, 30000);
 
   await includeHTML();
   renderProjects(projects);
 
-  // Use imagesLoaded if you want to wait for images, or just window.onload
   window.addEventListener('load', () => {
-    if (!preloaderRemoved) {
-      clearTimeout(preloaderTimeout);
-      const preloader = document.querySelector('#preloader');
-      if (preloader) preloader.remove();
-      preloaderRemoved = true;
-    }
+    clearTimeout(preloaderTimeout);
+    removePreloader();
   });
 });

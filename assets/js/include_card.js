@@ -1,4 +1,9 @@
-async function includeHTML() {
+async function includeHTML(maxRetries = 5, attempt = 0) {
+  if (attempt >= maxRetries) {
+    console.warn("includeHTML: max retries reached, stopping recursion");
+    return;
+  }
+
   const elements = document.querySelectorAll('[include-html]');
   if (elements.length === 0) return;
 
@@ -9,27 +14,22 @@ async function includeHTML() {
       if (!response.ok) throw new Error("Failed to load " + file);
       const text = await response.text();
 
-      // Temporary container to parse HTML
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = text;
 
-      // Move styles
       tempDiv.querySelectorAll('link[rel="stylesheet"], style').forEach(style => {
-        document.head.appendChild(style.cloneNode(true));
+        if (!document.head.querySelector(`style[data-href="${style.href}"], link[href="${style.href}"]`)) {
+          document.head.appendChild(style.cloneNode(true));
+        }
       });
 
-      // Move scripts
       tempDiv.querySelectorAll('script').forEach(script => {
         const newScript = document.createElement('script');
-        if (script.src) {
-          newScript.src = script.src;
-        } else {
-          newScript.textContent = script.textContent;
-        }
+        if (script.src) newScript.src = script.src;
+        else newScript.textContent = script.textContent;
         document.body.appendChild(newScript);
       });
 
-      // Replace content (excluding moved styles/scripts)
       el.innerHTML = tempDiv.innerHTML;
       el.removeAttribute('include-html');
     } catch (err) {
@@ -38,11 +38,53 @@ async function includeHTML() {
     }
   });
 
-  // Wait for all includes in this pass to finish
   await Promise.all(promises);
 
-  // 🔁 Now re-run to catch nested includes
-  await includeHTML();
+  // Re-run if nested includes remain
+  await includeHTML(maxRetries, attempt + 1);
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+  let preloaderRemoved = false;
+  const preloader = document.querySelector('#preloader');
+
+  // Fallback timeout to forcibly remove preloader
+  const preloaderTimeout = setTimeout(() => {
+    if (preloader && !preloaderRemoved) {
+      preloader.remove();
+      preloaderRemoved = true;
+      console.warn('Preloader forcibly removed after timeout.');
+    }
+  }, 30000);
+
+  try {
+    await includeHTML();
+    renderProjects(projects);
+  } catch (error) {
+    console.error("Error during page initialization:", error);
+  } finally {
+    // Remove preloader after async operations, if still visible
+    if (preloader && !preloaderRemoved) {
+      preloader.remove();
+      preloaderRemoved = true;
+      clearTimeout(preloaderTimeout);
+    }
+  }
+
+  window.addEventListener('load', () => {
+    if (preloader && !preloaderRemoved) {
+      preloader.remove();
+      preloaderRemoved = true;
+      clearTimeout(preloaderTimeout);
+    }
+  });
+});
+
+// Global error handler for unhandled promise rejections
+window.addEventListener('unhandledrejection', event => {
+  console.error('Unhandled promise rejection:', event.reason);
+  const preloader = document.querySelector('#preloader');
+  if (preloader) preloader.remove();
+});
 
 includeHTML();

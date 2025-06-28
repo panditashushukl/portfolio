@@ -4,10 +4,6 @@
 
 .projectCard{
   margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: 20px;
   background-color: var(--surface-color);
   border-radius: 8px;
