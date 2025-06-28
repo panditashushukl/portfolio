@@ -1,4 +1,4 @@
-(() => {
+function initPageScripts() {
   "use strict";
 
   // Cached selectors
@@ -210,5 +210,8 @@
       }
     });
   }
+}
 
-})();
+document.addEventListener('DOMContentLoaded', () => {
+  initPageScripts();
+});
