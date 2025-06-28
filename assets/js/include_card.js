@@ -45,17 +45,6 @@ async function includeHTML(maxRetries = 5, attempt = 0) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  let preloaderRemoved = false;
-  const preloader = document.querySelector('#preloader');
-
-  // Fallback timeout to forcibly remove preloader
-  const preloaderTimeout = setTimeout(() => {
-    if (preloader && !preloaderRemoved) {
-      preloader.remove();
-      preloaderRemoved = true;
-      console.warn('Preloader forcibly removed after timeout.');
-    }
-  }, 30000);
 
   try {
     await includeHTML();
@@ -64,29 +53,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   } catch (error) {
     console.error("Error during page initialization:", error);
-  } finally {
-    // Remove preloader after async operations, if still visible
-    if (preloader && !preloaderRemoved) {
-      preloader.remove();
-      preloaderRemoved = true;
-      clearTimeout(preloaderTimeout);
-    }
   }
 
-  window.addEventListener('load', () => {
-    if (preloader && !preloaderRemoved) {
-      preloader.remove();
-      preloaderRemoved = true;
-      clearTimeout(preloaderTimeout);
-    }
-  });
 });
 
 // Global error handler for unhandled promise rejections
 window.addEventListener('unhandledrejection', event => {
   console.error('Unhandled promise rejection:', event.reason);
-  const preloader = document.querySelector('#preloader');
-  if (preloader) preloader.remove();
 });
 
 includeHTML();
