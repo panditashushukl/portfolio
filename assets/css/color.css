@@ -1,0 +1,44 @@
+:root {
+  --default-color-header: var(--primary-blue);        /* Soft Neon Indigo */
+  --background-color-header: #12121a;     /* Rich Black Blue */
+  --heading-color-header: #f0f0f0;        /* Light Gray (for contrast on black) */
+  --contrast-color-header: #000000;       /* Pure Black */
+}
+
+/* Blue Accent Color */
+:root {
+  /* Core Theme Variables */
+  --default-color: var(--primary-blue);         /* Main theme color */
+  --background-color: var(--light-blue-bg);     /* Page background */
+  --accent-color: var(--sky-blue-accent);       /* Buttons, highlights */
+  --heading-color: var(--navy-heading);         /* Strong headings */
+  --contrast-color: var(--pure-white);          /* Contrast text/icons */
+
+  /* Surface and Component Backgrounds */
+  --surface-color: var(--very-pale-blue);       /* Cards, panels, UI surfaces */
+  --card-bg: var(--soft-blue);                  /* Card background */
+
+  /* Text and Icon Colors */
+  --icon-color: var(--bright-icon-blue);        /* Icons */
+  --text-dark: var(--deep-blue-text);           /* Main text color */
+  --text-muted: var(--muted-text);              /* Paragraphs, secondary text */
+  --highlight-color: var(--bold-blue);          /* Strong emphasis text */
+  --subtext-color: var(--soft-grey-blue);       /* Sub-labels, footnotes */
+
+  /* Descriptive Color Aliases */
+  --primary-blue: #1565c0;           /* Strong Blue */
+  --light-blue-bg: #e3f2fd;          /* Light Blue Background */
+  --sky-blue-accent: #039be5;        /* Accent Blue (Sky) */
+  --navy-heading: #0d47a1;           /* Dark Navy Blue */
+  --pure-white: #ffffff;             /* White */
+
+  --very-pale-blue: #f5faff;         /* Surface background */
+  --soft-blue: #e1f5fe;              /* Card background */
+
+  --bright-icon-blue: #40c4ff;       /* Icon color */
+  --deep-blue-text: #2c3e50;         /* Gunmetal-like dark blue */
+  --muted-text: #555;                /* Muted gray text */
+  --bold-blue: #2962ff;              /* Bold highlight blue */
+  --soft-grey-blue: #78909c;         /* Subtext blue-grey */
+}
+

@@ -1,5 +1,5 @@
 a {
-  color: #2e7d32; /* Using your green color */
+  color: var(--accent-color); 
   text-decoration: none;
   font-weight: 600;
   position: relative;
@@ -15,7 +15,7 @@ a::after {
   bottom: -3px;
   width: 100%;
   height: 2px;
-  background-color: #2e7d32;
+  background-color: var(--accent-color);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
@@ -24,7 +24,7 @@ a::after {
 /* Hover state */
 a:hover,
 a:focus {
-  color: #145214; /* Darker green */
+  color: var(--heading-color); 
 }
 
 a:hover::after,
@@ -34,5 +34,20 @@ a:focus::after {
 }
 
 ul {
-  list-style: none;    /* Removes bullets */
+  list-style: none;  
+}
+
+span .btn{
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--accent-color);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+span .btn:hover {
+  background-color: color-mix(in srgb, var(--accent-color) 85%, white 15%);
+  transform: scale(1.05);
 }

@@ -25,10 +25,10 @@ const projects = [
       title: "A Facebook Clone",
       url: null,
       description: "Developed a full-stack Facebook Clone web application using the MERN stack, replicating core social media functionalities such as user authentication, profile management, posting and commenting.",
-          links: {
-      live: null, 
-      github: null,
-    },
+      links: {
+        live: null, 
+        github: null,
+      },
       techStack: [
         { name: "React.js", icon: "bi-ui-checks-grid", desc: "Frontend library for building interactive user interfaces." },
         { name: "Node.js", icon: "bi-terminal-fill", desc: "JavaScript runtime environment for executing backend code." },
@@ -50,18 +50,18 @@ function renderProjects(projects) {
 
   const allProjectsHTML = projects.map(project => {
     const techHTML = project.techStack.map(item => `
-      <div class="col-lg-4 col-md-6 project-item d-flex card" data-aos="fade-up">
-        <div class="icon flex-shrink-0"><i class="bi ${item.icon}"></i></div>
-        <div>
+      <div class="project-item col-lg-4 col-md-6 d-flex card" data-aos="fade-up">
+        <div class="icon flex-shrink-0"><i class="bi ${item.icon} icon-container"></i></div>
+        <div class = "description-container">
           <h4 class="title"><a href="javascript:void(0)" class="stretched-link">${item.name}</a></h4>
           <p class="description">${item.desc}</p>
         </div>
       </div>`).join("");
 
     const featureHTML = project.features.map(item => `
-      <div class="col-lg-4 col-md-6 project-item d-flex card" data-aos="fade-up">
-        <div class="icon flex-shrink-0"><i class="bi ${item.icon}"></i></div>
-        <div>
+      <div class="project-item col-lg-4 col-md-6 d-flex card" data-aos="fade-up">
+        <div class="icon flex-shrink-0"><i class="bi ${item.icon}  icon-container"></i></div>
+        <div class = "description-container">
           <h4 class="title"><a href="javascript:void(0)" class="stretched-link">${item.title}</a></h4>
           <p class="description">${item.desc}</p>
         </div>

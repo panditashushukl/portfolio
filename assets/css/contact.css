@@ -14,20 +14,6 @@
   margin-bottom: 40px;
 }
 
-.contact .info-item i {
-  font-size: 20px;
-  color: var(--accent-color);
-  background: color-mix(in srgb, var(--accent-color), transparent 92%);
-  width: 44px;
-  height: 44px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
-  transition: all 0.3s ease-in-out;
-  margin-right: 15px;
-}
-
 .contact .info-item h3 {
   padding: 0;
   font-size: 18px;
@@ -39,11 +25,6 @@
   padding: 0;
   margin-bottom: 0;
   font-size: 14px;
-}
-
-.contact .info-item:hover i {
-  background: var(--accent-color);
-  color: var(--contrast-color);
 }
 
 .contact button[type=submit] {

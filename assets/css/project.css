@@ -1,0 +1,13 @@
+.project-item{
+  flex-direction: row;
+  align-content: center;
+}
+.project-item .icon {
+  margin-right: 20px;
+  align-content: center;
+}
+.description-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

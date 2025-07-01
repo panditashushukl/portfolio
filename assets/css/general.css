@@ -1,17 +1,3 @@
-:root {
-  --default-color: #2e7d32;       /* Forest Green */
-  --background-color: #fffaf0;    /* Floral White */
-  --accent-color: #d84315;        /* Burnt Orange */
-  --heading-color: #3e2723;       /* Rich Brown */
-  --contrast-color: #ffffff;      /* Pure White */
-}
-
-:root {
-  --surface-color: #ffffff;
-  --heading-color: #222;
-  --card-bg: #f0f4f8;
-}
-
 .navicons {
   gap: 1.5rem;
   padding: 1rem;
@@ -74,4 +60,23 @@
 
 .subCard:hover {
   transform: scale(1.05);
+}
+
+.icon-container {
+  font-size: 20px;
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  margin-right: 15px;
+}
+
+.icon-container:hover{
+  background: var(--accent-color);
+  color: var(--contrast-color);
 }

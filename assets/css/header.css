@@ -1,11 +1,3 @@
-:root {
-  --default-color-header: #6c63ff;        /* Soft Neon Indigo */
-  --background-color-header: #12121a;     /* Rich Black Blue */
-  --accent-color-header: #e91e63;         /* Deep Pink */
-  --heading-color-header: #f0f0f0;        /* Light Gray (for contrast on black) */
-  --contrast-color-header: #000000;       /* Pure Black */
-}
-
 .header {
   color: var(--default-color-header);
   background-color: var(--background-color-header);
@@ -71,7 +63,7 @@
 
 .header .social-links a:hover {
   color: var(--contrast-color-header);
-  background: var(--accent-color-header);
+  background: var(--accent-color);
   transform: scale(1.05);
 }
 
@@ -94,7 +86,7 @@
 
 .header .header-toggle {
   color: var(--contrast-color-header);
-  background-color: var(--accent-color-header);
+  background-color: var(--accent-color);
   font-size: 20px;
   display: none;
   align-items: center;
@@ -112,7 +104,7 @@
 }
 
 .header .header-toggle:hover {
-  background-color: color-mix(in srgb, var(--accent-color-header) 85%, white 15%);
+  background-color: color-mix(in srgb, var(--accent-color) 85%, white 15%);
 }
 
 .navmenu a{
