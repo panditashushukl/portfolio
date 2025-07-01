@@ -19,7 +19,6 @@
 .containerCard h2 {
   font-size: 1.8rem;
   margin-bottom: 16px;
-  color: var(--heading-color);
   font-weight: 700;
   border-left: 5px solid #0077ff;
   padding-left: 12px;
