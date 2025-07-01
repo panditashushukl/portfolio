@@ -1,15 +1,22 @@
 function initializeUI() {
   "use strict";
+  
   //1. Toggle  Header
+  let headerToggleBtn;
+  function headerToggle() {
+    document.querySelector('#header').classList.toggle('header-show');
+    headerToggleBtn.classList.toggle('bi-list');
+    headerToggleBtn.classList.toggle('bi-x');
+  }
   try {
-    const headerToggleBtn = document.querySelector('#header-toggle');
+    headerToggleBtn = document.querySelector('#header-toggle');
     if (headerToggleBtn) {
-      function headerToggle() {
-        document.querySelector('#header').classList.toggle('header-show');
-        headerToggleBtn.classList.toggle('bi-list');
-        headerToggleBtn.classList.toggle('bi-x');
-      }
       headerToggleBtn.addEventListener('click', headerToggle);
+      // Add event listener to nav menu links
+      const navLinks = document.querySelectorAll('#navmenu a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', headerToggle);
+      });
     } else {
       console.warn("header-toggle button not found.");
     }
