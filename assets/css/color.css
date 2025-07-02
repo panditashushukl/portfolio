@@ -42,3 +42,17 @@
   --soft-grey-blue: #78909c;         /* Subtext blue-grey */
 }
 
+.gradient-bg {
+  background: linear-gradient(to right, #9c99a5, #f8fffa, #fdfffe, #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (width < 1000px) {
+  .gradient-bg {
+    background: linear-gradient(to right, #d1cdde, #e1eae3, #fdfffe, #fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}

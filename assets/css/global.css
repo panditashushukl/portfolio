@@ -37,6 +37,10 @@ ul {
   list-style: none;  
 }
 
+.square-list{
+  list-style: square;
+}
+
 span .btn{
   display: inline-block;
   padding: 8px 16px;

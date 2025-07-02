@@ -51,7 +51,7 @@
   border-bottom: 2px solid var(--accent-color);
 }
 
-@media (max-width: 768px) {
+@media (width < 1000px) {
   .shukla h2 {
     font-size: 24px;
   }
@@ -60,5 +60,9 @@
     font-size: 18px;
     margin: 5px 0 75px 0;
   }
-
+  .gradient-bg {
+    background: linear-gradient(to right, #d1cdde, #e1eae3, #fdfffe, #fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
 }

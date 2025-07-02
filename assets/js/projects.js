@@ -80,7 +80,7 @@ function renderProjects(projects) {
       </div>` : '';
 
     return `
-      <div class="projectCard mb-5" data-aos="fade-up">
+      <div class="containerCard mb-5" data-aos="fade-up">
         <h3><b>${project.title}</b></h3>
         ${linkIcons}
         <p>${project.description}</p>
