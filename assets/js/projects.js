@@ -22,12 +22,12 @@ const projects = [
       ]
     },
     {
-      title: "A Facebook Clone",
+      title: "Samajik World",
       url: null,
       description: "Developed a full-stack Facebook Clone web application using the MERN stack, replicating core social media functionalities such as user authentication, profile management, posting and commenting.",
       links: {
         live: null, 
-        github: null,
+        github: "https://github.com/panditashushukl/SamajikWorld",
       },
       techStack: [
         { name: "React.js", icon: "bi-ui-checks-grid", desc: "Frontend library for building interactive user interfaces." },
@@ -37,9 +37,9 @@ const projects = [
         { name: "Tailwind CSS", icon: "bi-brush", desc: "Utility-first CSS framework for rapid UI styling." }
       ],
       features: [
-        { title: "Posting", icon: "bi-chat-dots", desc: "Users can able to Post on the Social Media." },
-        { title: "Commenting", icon: "bi-chat-left-text", desc: "Users can able to Like and Comment on the Platform." },
-        { title: "Profile Management", icon: "bi-person-lines-fill", desc: "Users can manage their Profile on the Platform." }
+        { title: "Profile Management", icon: "bi-person-lines-fill", desc: "Users can manage their Profile on the Platform." },
+        { title: "Microblogging", icon: "bi-chat-dots", desc: "Users can able to write Micro blog on the Social Media." },
+        { title: "Like & Commenting", icon: "bi-chat-left-text", desc: "Users can able to Like and Comment on the Platform." },
       ]
     }
 ];

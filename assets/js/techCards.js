@@ -1,23 +1,28 @@
 function renderTechStackCards() {
   const techStack = {
     Languages: [
-      { name: "HTML", icon: "bi-file-earmark-code" },
-      { name: "CSS", icon: "bi-palette" },
-      { name: "JavaScript", icon: "bi-lightning-fill" },
+      { name: "JavaScript", icon: "bi bi-filetype-js" },
       { name: "Python", icon: "bi-filetype-py" },
       { name: "Java", icon: "bi-cup-hot-fill" },
       { name: "C", icon: "bi-code" },
-      { name: "C++", icon: "bi-plus-circle" },
-      { name: "SQL", icon: "bi-database" }
+      { name: "C++", icon: "bi-plus-circle" }
     ],
-    Frameworks: [
+    Frontend: [
+      { name: "HTML", icon: "bi-file-earmark-code" },
+      { name: "CSS", icon: "bi bi-filetype-css" },
       { name: "React", icon: "bi-recycle" },
       { name: "React Native", icon: "bi-phone" },
-      { name: "Node.js", icon: "bi-terminal" },
-      { name: "Express", icon: "bi-gear-fill" },
-      { name: "MongoDB", icon: "bi-database-check" },
       { name: "Tailwind CSS", icon: "bi-wind" },
       { name: "Bootstrap", icon: "bi-bootstrap" }
+    ],
+    Backend: [
+      { name: "Node.js", icon: "bi-terminal" },
+      { name: "Express", icon: "bi-gear-fill" },
+      { name: "Flask", icon: "bi bi-code-square" }
+    ],
+    Database: [
+      { name: "MongoDB", icon: "bi-database-check" },
+      { name: "MySQL", icon: "bi-database-fill-lock" }
     ],
     Others: [
       { name: "Foundational Understanding", icon: "bi-book" },

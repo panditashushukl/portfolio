@@ -28,7 +28,7 @@ This site showcases my skills, projects, education, and contact information.
 
 ## 📁 Project Structure
 
-```
+```txt
 .
 ├── index.html
 ├── body.html
@@ -60,9 +60,11 @@ This site showcases my skills, projects, education, and contact information.
 
 3. **Start a local server**  
    Use the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension or run:
-   ```
+
+   `
    npx serve .
-   ```
+   `
+
    Then open `http://localhost:5502` (or your configured port).
 
 ---
@@ -86,4 +88,4 @@ This site showcases my skills, projects, education, and contact information.
 
 ---
 
-> © 2024 Ashutosh Shukla. All rights reserved.
+> © 2025 Ashutosh Shukla. All rights reserved.
