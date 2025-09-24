@@ -117,8 +117,27 @@
   margin: 0;
 }
 
+#navmenu a {
+  color: var(--text-dark);
+  transition: color 0.3s ease;
+}
+
+#navmenu a:hover {
+  color: var(--accent-color);
+}
+
 #navmenu a.active {
-  color:blue;
+  color: var(--accent-color);
+}
+
+/* Theme toggle button styling */
+.theme-toggle {
+  color: var(--text-dark) !important;
+  transition: color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--accent-color) !important;
 }
 
 @media (max-width: 1200px) {

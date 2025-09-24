@@ -36,14 +36,14 @@
   margin: 0;
   font-size: 40px;
   font-weight: 600;
-  color: #000;
+  color: var(--heading-color);
   text-transform: uppercase;
 }
 
 .shukla p {
   margin: 5px 0 0 0;
   font-size: 26px;
-  color: #000;
+  color: var(--text-dark);
 }
 
 .shukla p span {
