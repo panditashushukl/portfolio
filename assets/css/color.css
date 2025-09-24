@@ -41,7 +41,7 @@
 }
 
 .gradient-bg {
-  background: linear-gradient(to right, #ffffff, #90caf9, #64b5f6, #ffffff);
+  background: linear-gradient(to right, #9c99a5, #f8fffa, #fdfffe, #fff);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -49,7 +49,7 @@
 
 @media (width < 1000px) {
   .gradient-bg {
-    background: linear-gradient(to right, #ffffff, #90caf9, #64b5f6, #ffffff);
+    background: linear-gradient(to right, #9c99a5, #f8fffa, #fdfffe, #fff);
     -webkit-background-clip: text;
     background-clip: text;
   }
