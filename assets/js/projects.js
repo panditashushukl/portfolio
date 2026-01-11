@@ -4,7 +4,7 @@ const projects = [
     description:
       "Developed a full-stack Facebook Clone web application using the MERN stack, replicating core social media functionalities such as user authentication, profile management, posting and commenting.",
     links: {
-      live: null,
+      live: "https://samajik-world.vercel.app",
       github: "https://github.com/panditashushukl/SamajikWorld",
     },
     techStack: [
