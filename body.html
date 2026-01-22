@@ -1,0 +1,74 @@
+
+  <header id="header" class="header">
+    <i class="header-toggle bi bi-list" id="header-toggle"></i>
+
+    <div class="profile-img">
+      <img src="assets/img/shukla-profile.jpg" alt="" class="img-fluid rounded-circle">
+    </div>
+
+    <a href="index.html" class="logo">
+      <h1>ASHUTOSH SHUKLA</h1>
+    </a>
+
+    <div class="social-links text-center" include-html="./staticPages/social_links.html"></div>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="#shukla" class="active"><i class="bi bi-house navicons"></i>Home</a></li>
+        <li><a href="#about"><i class="bi bi-person navicons"></i> About</a></li>
+        <li><a href="#resume"><i class="bi bi-file-earmark-text navicons"></i> Resume</a></li>
+        <li><a href="#project"><i class="bi bi-images navicons"></i> Projects</a></li>
+        <li><a href="#skills"><i class="bi bi-tools navicons"></i> Skills</a></li>
+        <li><a href="#contact"><i class="bi bi-envelope navicons"></i> Contact ME</a></li>
+        <li><a href="#" id="dark-mode-toggle" class="theme-toggle" role="button" aria-pressed="false" title="Toggle dark mode"><i class="bi bi-moon navicons"></i> Toggle Theme</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <main class="main">
+
+    <!-- Shukla Section -->
+    <section id="shukla" class="shukla containerCard" include-html="./staticPages/shukla.html">
+    </section><!-- /Shukla Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about containerCard" include-html="./staticPages/about.html">
+    </section><!-- /About Section -->
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats containerCard" include-html="./staticPages/stats.html">
+    </section><!-- /Stats Section -->
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume containerCard" include-html="./staticPages/resume.html">
+    </section><!-- /Resume Section -->
+
+    <!-- Projects Section -->
+    <section id="project" class="project containerCard">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up" data-aos-duration="1000">
+        <h2>Projects</h2>
+      <div id="projectContainer"></div>
+    </section> <!-- Projects Section -->
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills containerCard" include-html="./staticPages/skills.html">
+    </section><!-- /Skills Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact containerCard" include-html="./staticPages/contact.html">
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" aria-label="Scroll to top">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>  
+
+  <!-- Preloader -->
+   <div class="preloader" id="preloader">
+    <div class="preloader__spinner"></div>
+    <div class="preloader__text">Loading...</div>
+  </div>

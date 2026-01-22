@@ -1,0 +1,215 @@
+/* Global dark theme styles */
+body {
+  background-color: var(--background-color) !important;
+  color: var(--text-dark) !important;
+}
+
+main {
+  background-color: var(--background-color) !important;
+}
+
+/* Ensure all text elements use proper dark theme colors */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color) !important;
+}
+
+p, span, div {
+  color: var(--text-dark) !important;
+}
+
+.section-title h2 {
+  color: var(--heading-color) !important;
+}
+
+.section-title p {
+  color: var(--text-muted) !important;
+}
+
+/* Bootstrap overrides for dark theme */
+.btn-primary {
+  background-color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  color: var(--contrast-color) !important;
+}
+
+.btn-primary:hover {
+  background-color: color-mix(in srgb, var(--accent-color) 85%, white 15%) !important;
+  border-color: color-mix(in srgb, var(--accent-color) 85%, white 15%) !important;
+}
+
+/* Form elements */
+.form-control {
+  background-color: var(--surface-color) !important;
+  border-color: var(--accent-color) !important;
+  color: var(--text-dark) !important;
+}
+
+.form-control:focus {
+  background-color: var(--surface-color) !important;
+  border-color: var(--accent-color) !important;
+  color: var(--text-dark) !important;
+  box-shadow: 0 0 0 0.2rem rgba(100, 181, 246, 0.25) !important;
+}
+
+/* Form labels */
+label {
+  color: var(--text-dark) !important;
+  font-weight: 600;
+}
+
+/* Textarea specific styling */
+textarea.form-control {
+  background-color: var(--surface-color) !important;
+  border-color: var(--accent-color) !important;
+  color: var(--text-dark) !important;
+  resize: vertical;
+}
+
+textarea.form-control:focus {
+  background-color: var(--surface-color) !important;
+  border-color: var(--accent-color) !important;
+  color: var(--text-dark) !important;
+  box-shadow: 0 0 0 0.2rem rgba(100, 181, 246, 0.25) !important;
+}
+
+/* Bootstrap cards */
+.card {
+  background-color: var(--surface-color) !important;
+  color: var(--text-dark) !important;
+}
+
+/* Bootstrap modals */
+.modal-content {
+  background-color: var(--surface-color) !important;
+  color: var(--text-dark) !important;
+}
+
+.modal-header {
+  border-bottom-color: var(--accent-color) !important;
+}
+
+.modal-footer {
+  border-top-color: var(--accent-color) !important;
+}
+
+/* Additional dark theme overrides */
+.container {
+  background-color: transparent !important;
+}
+
+.row {
+  background-color: transparent !important;
+}
+
+.col, .col-lg-4, .col-lg-6, .col-lg-8, .col-lg-5, .col-lg-7 {
+  background-color: transparent !important;
+}
+
+/* Ensure all text in static content is visible */
+.content h2, .content p, .content ul li {
+  color: var(--text-dark) !important;
+}
+
+.content ul li strong {
+  color: var(--heading-color) !important;
+}
+
+.content ul li span {
+  color: var(--text-muted) !important;
+}
+
+/* Info items styling */
+.info-item h3 {
+  color: var(--heading-color) !important;
+}
+
+.info-item p {
+  color: var(--text-dark) !important;
+}
+
+.info-item a {
+  color: var(--accent-color) !important;
+}
+
+/* Section titles */
+.section-title h5 {
+  color: var(--text-muted) !important;
+}
+
+.section-title ul li {
+  color: var(--text-dark) !important;
+}
+
+/* Category cards */
+.categoryCard {
+  background-color: var(--surface-color) !important;
+  color: var(--text-dark) !important;
+}
+
+.categoryCard h2 {
+  color: var(--heading-color) !important;
+}
+
+/* Ensure iframe (maps) has proper styling */
+iframe {
+  border: 2px solid var(--accent-color) !important;
+  border-radius: 8px;
+}
+
+a {
+  color: var(--accent-color); 
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Underline effect using ::after */
+a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+/* Hover state */
+a:hover,
+a:focus {
+  color: var(--heading-color); 
+}
+
+a:hover::after,
+a:focus::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+ul {
+  list-style: none;  
+}
+
+.square-list{
+  list-style: square;
+}
+
+span .btn{
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--accent-color);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+span .btn:hover {
+  background-color: color-mix(in srgb, var(--accent-color) 85%, white 15%);
+  transform: scale(1.05);
+}

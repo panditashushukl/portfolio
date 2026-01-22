@@ -1,0 +1,116 @@
+:root {
+  /* DARK THEME - DEFAULT */
+  --default-color-header: #64b5f6;        /* Light blue accent */
+  --background-color-header: #000000;     /* Pure Black */
+  --heading-color-header: #ffffff;        /* Pure White */
+  --contrast-color-header: #ffffff;       /* Pure White */
+
+  /* Core Theme Variables - Dark Theme */
+  --default-color: #64b5f6;         /* Light blue accent */
+  --background-color: #000000;     /* Pure Black background */
+  --accent-color: #90caf9;       /* Light blue accent */
+  --heading-color: #ffffff;         /* Pure white headings */
+  --contrast-color: #ffffff;          /* Pure white contrast */
+
+  /* Surface and Component Backgrounds - Dark */
+  --surface-color: #111111;       /* Very dark surface */
+  --card-bg: #1a1a1a;                  /* Dark card background */
+
+  /* Text and Icon Colors - Dark */
+  --icon-color: #90caf9;        /* Light blue icons */
+  --text-dark: #ffffff;           /* Pure white main text */
+  --text-muted: #cccccc;              /* Light gray paragraphs */
+  --highlight-color: #64b5f6;          /* Light blue emphasis */
+  --subtext-color: #aaaaaa;       /* Light gray subtext */
+
+  /* Descriptive Color Aliases - Dark Theme */
+  --primary-blue: #90caf9;           /* Light blue */
+  --light-blue-bg: #000000;          /* Pure black background */
+  --sky-blue-accent: #64b5f6;        /* Light blue accent */
+  --navy-heading: #ffffff;           /* Pure white heading */
+  --pure-white: #ffffff;             /* Pure white */
+
+  --very-pale-blue: #111111;         /* Very dark surface */
+  --soft-blue: #1a1a1a;              /* Dark card background */
+
+  --bright-icon-blue: #90caf9;       /* Light blue icon */
+  --deep-blue-text: #ffffff;         /* Pure white text */
+  --muted-text: #cccccc;                /* Light gray text */
+  --bold-blue: #64b5f6;              /* Light blue highlight */
+  --soft-grey-blue: #aaaaaa;         /* Light gray subtext */
+}
+
+.gradient-bg {
+  background: linear-gradient(to right, #9c99a5, #f8fffa, #fdfffe, #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (width < 1000px) {
+  .gradient-bg {
+    background: linear-gradient(to right, #9c99a5, #f8fffa, #fdfffe, #fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+/* Light theme alternative - if needed for theme toggle */
+[data-theme="light"] {
+  /* Core Colors - Light Theme */
+  --primary-blue: #1565c0;           /* Strong Blue */
+  --light-blue-bg: #ffffff;          /* Pure White Background */
+  --sky-blue-accent: #039be5;        /* Accent Blue (Sky) */
+  --navy-heading: #0d47a1;           /* Dark Navy Blue */
+  --pure-white: #ffffff;             /* White */
+
+  --very-pale-blue: #f8f9fa;         /* Light surface background */
+  --soft-blue: #e9ecef;              /* Light card background */
+
+  --bright-icon-blue: #40c4ff;       /* Icon color */
+  --deep-blue-text: #212529;         /* Dark text */
+  --muted-text: #6c757d;             /* Muted gray text */
+  --bold-blue: #2962ff;              /* Bold highlight blue */
+  --soft-grey-blue: #6c757d;         /* Subtext gray */
+
+  /* Core theme variables updated for light theme */
+  --default-color-header: var(--primary-blue);
+  --background-color-header: #f8f9fa;   /* Light header background */
+  --heading-color-header: #212529;      /* Dark headings */
+  --contrast-color-header: #212529;     /* Dark text */
+
+  --default-color: var(--primary-blue);
+  --background-color: var(--light-blue-bg);
+  --accent-color: var(--sky-blue-accent);
+  --heading-color: var(--navy-heading);
+  --contrast-color: var(--pure-white);
+
+  --surface-color: var(--very-pale-blue);
+  --card-bg: var(--soft-blue);
+
+  --icon-color: var(--bright-icon-blue);
+  --text-dark: var(--deep-blue-text);
+  --text-muted: var(--muted-text);
+  --highlight-color: var(--bold-blue);
+  --subtext-color: var(--soft-grey-blue);
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Ensure theme toggle button is always visible and clickable */
+#dark-mode-toggle {
+  cursor: pointer !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+
+#dark-mode-toggle:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}

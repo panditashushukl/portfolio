@@ -1,0 +1,81 @@
+.navicons {
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.containerCard {
+  background-color: var(--surface-color);
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.containerCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.containerCard h2 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  font-weight: 700;
+  border-left: 5px solid var(--accent-color);
+  padding-left: 12px;
+  transition: color 0.3s ease;
+  color: var(--heading-color);
+}
+
+.CardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 40px auto;
+  max-width: 900px;
+  padding: 0 16px;
+}
+
+
+.subCardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.subCard {
+  background-color: var(--card-bg);
+  padding: 10px 16px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+}
+
+.subCard:hover {
+  transform: scale(1.05);
+}
+
+.icon-container {
+  font-size: 20px;
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  margin-right: 15px;
+}
+
+.icon-container:hover{
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}

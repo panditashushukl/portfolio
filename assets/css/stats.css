@@ -1,0 +1,51 @@
+/* Stats Item Box */
+.stats-item {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Hover effect */
+.stats-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+/* Icons */
+.stats-item i {
+  font-size: 2.5rem;
+  color: var(--icon-color);
+  display: inline-block;
+}
+
+/* Counter Number */
+.stats-item .purecounter {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  display: block;
+}
+
+/* Heading and description */
+.stats-item p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.stats-item p strong {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--highlight-color);
+}
+
+.stats-item p span {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--subtext-color);
+  font-weight: 400;
+}
